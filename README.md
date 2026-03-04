@@ -19,7 +19,7 @@ Structured logging (`str` + `int` + `bool` fields) writing to `/dev/null`, Bun 1
 ## Install
 
 ```bash
-bun add zbun
+bun add @2ez4dan/zbun
 ```
 
 **Requires Bun >= 1.1.** Recommended: Bun >= 1.3.x.
@@ -27,7 +27,7 @@ bun add zbun
 ## Quick Start
 
 ```typescript
-import { createLogger } from 'zbun';
+import { createLogger } from '@2ez4dan/zbun';
 
 const log = createLogger({
   level: 'info',          // 'trace' | 'debug' | 'info' | 'warn' | 'error' | 'fatal'
