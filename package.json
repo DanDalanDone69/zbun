@@ -1,5 +1,5 @@
 {
-  "name": "zbun",
+  "name": "@2ez4dan/zbun",
   "version": "0.1.0",
   "type": "module",
   "main": "./dist/index.js",
