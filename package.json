@@ -2,24 +2,36 @@
   "name": "zbun",
   "version": "0.1.0",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "bun": ">=1.0.0"
   },
   "scripts": {
     "test": "bun test",
     "bench": "bun run benchmarks/run.ts",
-    "build": "bun build src/index.ts --outdir dist --target bun",
+    "build": "bun build src/index.ts --outdir dist --target bun --sourcemap=external && bun x tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",
+    "build:types": "bun x tsc --project tsconfig.build.json --declaration --emitDeclarationOnly --outDir dist",
     "lint": "biome check src/ tests/ benchmarks/",
     "lint:fix": "biome check --write src/ tests/ benchmarks/",
-    "format": "biome format --write src/ tests/ benchmarks/"
+    "format": "biome format --write src/ tests/ benchmarks/",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {},
   "devDependencies": {
     "@biomejs/biome": "^2.4.5",
     "bun-types": "^1.3.10",
     "pino": "^10.3.1",
+    "typescript": "^5.0.0",
     "winston": "^3.19.0"
   }
 }
