@@ -36,13 +36,14 @@ self.onmessage = (ev: MessageEvent) => {
   }
 };
 
-function consumeLoop(): void {
+async function consumeLoop(): Promise<void> {
   while (running) {
     const available = ringBufferAvailable(rb);
 
     if (available === 0) {
       writer.flush();
-      Atomics.wait(rb.ctrl, 0, Atomics.load(rb.ctrl, 0), 100);
+      const result = Atomics.waitAsync(rb.ctrl, 0, Atomics.load(rb.ctrl, 0), 100);
+      if (result.async) await result.value;
       continue;
     }
 
