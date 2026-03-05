@@ -1,6 +1,19 @@
 {
   "name": "@2ez4dan/zbun",
   "version": "0.1.4",
+  "description": "The fastest structured logging library for Bun — zero dependencies, zero allocations, lock-free async I/O",
+  "keywords": [
+    "bun",
+    "logger",
+    "logging",
+    "structured-logging",
+    "json-logger",
+    "zero-dependency",
+    "async-logging",
+    "high-performance"
+  ],
+  "author": "Danielle Bote <daniellebote@gmail.com>",
+  "license": "MIT",
   "repository": "https://github.com/DanDalanDone69/zbun",
   "type": "module",
   "main": "./dist/index.js",
